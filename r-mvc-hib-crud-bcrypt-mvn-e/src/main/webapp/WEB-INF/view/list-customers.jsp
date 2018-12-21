@@ -1,5 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <!DOCTYPE html>
 
 <html>
@@ -40,7 +40,10 @@ Refresh page every 5 seconds -->
 
 <link type="text/css" rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/style.css" />
-	
+	<link type="text/css"
+		  rel="stylesheet"
+		  href="${pageContext.request.contextPath}/resources/css/add-customer-style.css">
+
 
 </head>
 
@@ -60,66 +63,67 @@ Refresh page every 5 seconds -->
 
 			<input type="button" value="Add Customer" class="btn btn-danger"
 				onclick="window.location.href='showFormForAdd'; return false;"
-				class="add-button" /><br/>
-			<div class="w3-container">
- <a href="${pageContext.request.contextPath}/login/loginform"
-						class="w3-button w3-black">LOGOUT</a>
-				</div>
-			</div>
-
-			<!--  add our html table here -->
-			<table border="1" cellpadding="5">
-
-				<tr>
-					<th bgcolor="gray">Customer Name</th>
-					<th bgcolor="gray">Customer Address</th>
-					<th bgcolor="gray">Customer Pin Code</th>
-					<th bgcolor="gray">Customer Email</th>
-					<th bgcolor="gray">Contact Number</th>
-					<th bgcolor="gray">Registration Date</th>
-					<th bgcolor="gray">Created By</th>
-					<th bgcolor="gray">Modified Date
-					<th>
-				</tr>
-
-				<!-- loop over and print our customers -->
-				<c:forEach var="tempCustomer" items="${customers}">
-
-					<!-- construct an "update" link with customer id -->
-					<c:url var="updateLink" value="/customer/showFormForUpdate">
-						<c:param name="customerCode" value="${tempCustomer.code}" />
-					</c:url>
-
-
-					<!-- construct an "delete" link with customer id -->
-					<c:url var="deleteLink" value="/customer/delete">
-						<c:param name="customerCode" value="${tempCustomer.code}" />
-					</c:url>
-					<tr>
-						<td>${tempCustomer.customerName}</td>
-						<td>${tempCustomer.customerAddress}</td>
-						<td>${tempCustomer.customerPinCode}</td>
-						<td>${tempCustomer.customerEmail}</td>
-						<td>${tempCustomer.contactNumber}</td>
-						<td>${tempCustomer.registrationDate}</td>
-						<td>${tempCustomer.createdBy}</td>
-						<td>${tempCustomer.modifiedDate}</td>
-
-						<td>
-							<!-- display the update link --> <a href="${updateLink}"
-							onclick="if (!(confirm('Are you sure you want to edit this customer?'))) return false"
-							class="btn btn-primary btn-sm">Edit</a> <a href="${deleteLink}"
-							onclick="if (!(confirm('Are you sure you want to delete this customer?'))) return false"
-							class="btn btn-danger btn-sm">Delete</a>
-						</td>
-					</tr>
-
-				</c:forEach>
-
-			</table>
-
+				class="add-button" /><br />
 
 		</div>
+
+		<!--  add our html table here -->
+		<table border="1" cellpadding="5">
+
+			<tr>
+				<th bgcolor="gray"><spring:message code="lbl.customerName"/></th>
+				<th bgcolor="gray"><spring:message code="lbl.customerAddress"/></th>
+				<th bgcolor="gray"><spring:message code="lbl.customerPinCode"/></th>
+				<th bgcolor="gray"><spring:message code="lbl.customerEmail"/></th>
+				<th bgcolor="gray"><spring:message code="lbl.createdBy"/></th>
+				<th bgcolor="gray"><spring:message code="lbl.registrationDate"/></th>
+				<th bgcolor="gray"><spring:message code="lbl.createdBy"/></th>
+				<th bgcolor="gray"><spring:message code="lbl.modifiedDate"/>
+				<th>
+			</tr>
+
+			<!-- loop over and print our customers -->
+			<c:forEach var="tempCustomer" items="${customers}">
+
+				<!-- construct an "update" link with customer id -->
+				<c:url var="updateLink" value="/customer/showFormForUpdate">
+					<c:param name="customerCode" value="${tempCustomer.code}" />
+				</c:url>
+
+
+				<!-- construct an "delete" link with customer id -->
+				<c:url var="deleteLink" value="/customer/delete">
+					<c:param name="customerCode" value="${tempCustomer.code}" />
+				</c:url>
+				<tr>
+					<td>${tempCustomer.customerName}</td>
+					<td>${tempCustomer.customerAddress}</td>
+					<td>${tempCustomer.customerPinCode}</td>
+					<td>${tempCustomer.customerEmail}</td>
+					<td>${tempCustomer.contactNumber}</td>
+					<td>${tempCustomer.registrationDate}</td>
+					<td>${tempCustomer.createdBy}</td>
+					<td>${tempCustomer.modifiedDate}</td>
+
+					<td>
+						<!-- display the update link --> <a href="${updateLink}"
+						onclick="if (!(confirm('Are you sure you want to edit this customer?'))) return false"
+						class="btn btn-primary btn-sm">Edit</a> <a href="${deleteLink}"
+						onclick="if (!(confirm('Are you sure you want to delete this customer?'))) return false"
+						class="btn btn-danger btn-sm">Delete</a>
+					</td>
+				</tr>
+
+			</c:forEach>
+
+		</table>
+		<br />
+		<div class="w3-container">
+			<a href="${pageContext.request.contextPath}/login/loginform"
+				class="w3-button w3-black">LOGOUT</a>
+		</div>
+
+	</div>
 
 	</div>
 

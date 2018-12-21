@@ -20,26 +20,38 @@ public class LoginController {
 
 	@Autowired
 	private LoginService loginService;
-
-	@GetMapping("/newuser")
-	public String showFormForAdd(Model theModel) {
+	@GetMapping("/user")
+	public String Form(Model theModel) {
 
 		// create model
 		User theUser = new User();
 
 		theModel.addAttribute("user", theUser);
 
+		return "page";
+	}
+
+
+	@GetMapping("/newuser")
+	public String showFormForAdd(Model theModel ) {
+
+		// create model
+		User theUser = new User();
+
+		theModel.addAttribute("user", theUser);
+		
 		return "new-user-form";
 	}
 	
 
 	@PostMapping("/saveUser")
-	public String saveCustomer(@ModelAttribute("user") User theUser) {
+	public String saveCustomer(@ModelAttribute("user") User theUser,Model theModel ,final HttpServletRequest request) {
 
 		// save the customer 
 		loginService.saveUser(theUser);
+		theModel.addAttribute("msg", "Registernation Successful!!");
 
-		return "redirect:/customer/list";
+		return "new-user-form";
 	}
 
 	@GetMapping("/loginform")

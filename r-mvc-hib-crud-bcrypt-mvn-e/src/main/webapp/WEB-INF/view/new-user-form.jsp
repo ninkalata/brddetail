@@ -67,7 +67,10 @@ $(function(){
 		
 		</form:form>
 	
-	
+	<c:if test="${not empty msg}">
+<p class="text-danger">
+ ${msg}</p>
+</c:if>
 	</div>
 
 </body>

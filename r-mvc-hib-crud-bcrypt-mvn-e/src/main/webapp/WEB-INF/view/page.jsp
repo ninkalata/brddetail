@@ -37,8 +37,8 @@ body {
 
 <div class="topnav">
   <a class="active" href="page.jsp">Home</a>
-  <a href="new-user-form.jsp">Admin </a>
-  <a href="login-form.jsp">User</a>
+ <a href="${pageContext.request.contextPath}/login/loginform">USER</a>
+  <a href="${pageContext.request.contextPath}/login/newuser">ADMIN</a>
 </div>
 
 

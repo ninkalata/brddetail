@@ -7,13 +7,14 @@
 <head>
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 <div id="nav-placeholder"></div>
-<script src="simple-slider.js"></script>
+ <script src="simple-slider.js"></script>
 <link href="simple-slider.css" rel="stylesheet" type="text/css" />
  <script>
 $(function(){
   $("#nav-placeholder").load("page.jsp");
 });
 </script> 
+
 	<title><spring:message code="lbl.title"/></title>
 	<style>
       .error {
@@ -39,6 +40,12 @@ $(function(){
 </head>
 
 <body>
+<div class="topnav">
+  <a class="active" href="page.jsp">Home</a>
+ <a href="${pageContext.request.contextPath}/login/loginform">USER</a>
+  <a href="${pageContext.request.contextPath}/login/newuser">ADMIN</a>
+</div>
+
 	<h1>My bank</h1>
 	<div id="wrapper">
 		<div id="header">

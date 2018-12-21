@@ -25,20 +25,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.demo.entity.Customer;
 import com.demo.service.CustomerService;
 
-
 @Controller
 @RequestMapping("/customer")
 public class CustomerController {
 
-
 	@Autowired
 	private CustomerService customerService;
-@InitBinder
-public void initBinder(WebDataBinder dataBinder)
-{
-	StringTrimmerEditor ste = new StringTrimmerEditor(true);
-	dataBinder.registerCustomEditor(String.class,ste);
-}
+
+	@InitBinder
+	public void initBinder(WebDataBinder dataBinder) {
+		StringTrimmerEditor ste = new StringTrimmerEditor(true);
+		dataBinder.registerCustomEditor(String.class, ste);
+	}
 
 	@GetMapping("/list")
 	public String listCustomers(Model theModel) {
@@ -55,10 +53,9 @@ public void initBinder(WebDataBinder dataBinder)
 	@GetMapping("/showFormForAdd")
 
 	public String showFormForAdd(Model theModel) {
-		
-		// create model 
+
+		// create model
 		Customer theCustomer = new Customer();
-	
 
 		theModel.addAttribute("customer", theCustomer);
 
@@ -66,17 +63,15 @@ public void initBinder(WebDataBinder dataBinder)
 	}
 
 	@PostMapping("/saveCustomer")
-	public String saveCustomer(@Valid @ModelAttribute("customer") Customer theCustomer ,BindingResult result) {
+	public String saveCustomer(@Valid @ModelAttribute("customer") Customer theCustomer, BindingResult result) {
 
-		if(result.hasErrors()) {
+		if (result.hasErrors()) {
 			return "customer-form";
-		}
-		else
-		{
+		} else {
 			// save the customer using our service
 			customerService.saveCustomer(theCustomer);
-		    return "redirect:/customer/list";
-	}
+			return "redirect:/customer/list";
+		}
 	}
 
 	@GetMapping("/showFormForUpdate")
@@ -84,7 +79,6 @@ public void initBinder(WebDataBinder dataBinder)
 
 		// get the customer from our service
 		Customer theCustomer = customerService.getCustomer(thecode);
-
 
 		// set customer as a model attribute to pre-populate the form
 		theModel.addAttribute("customer", theCustomer);
@@ -98,7 +92,7 @@ public void initBinder(WebDataBinder dataBinder)
 
 		// delete the customer
 		customerService.deleteCustomer(thecode);
-		
+
 		return "redirect:/customer/list";
 	}
 

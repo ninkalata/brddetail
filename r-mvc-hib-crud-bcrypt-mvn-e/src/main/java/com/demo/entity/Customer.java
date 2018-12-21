@@ -36,7 +36,8 @@ public class Customer {
 	private String customerAddress;
 
 	@Column(name = "customerPinCode")
-    @Size(max=6,message = "Pin code should be 6 digits")
+
+    @Size(min =6 ,max=6,message = "Pin code should be 6 digits")
 	@NotNull(message = "Pin code should be 6 digits")
     private String customerPinCode;
 	
