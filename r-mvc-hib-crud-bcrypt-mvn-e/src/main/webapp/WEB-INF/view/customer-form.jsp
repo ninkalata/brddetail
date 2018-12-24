@@ -8,27 +8,36 @@
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 <div id="nav-placeholder"></div>
  <script src="simple-slider.js"></script>
-<link href="simple-slider.css" rel="stylesheet" type="text/css" />
- <script>
-$(function(){
-  $("#nav-placeholder").load("page.jsp");
-});
-</script> 
+<style>
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
 
-	<title><spring:message code="lbl.title"/></title>
-	<style>
-      .error {
-         color: #ff0000;
-      }
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
 
-      .errorblock {
-         color: #000;
-         background-color: #ffEEEE;
-         border: 3px solid #ff0000;
-         padding: 8px;
-         margin: 16px;
-      }
-   </style>
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+</style>
 
 	<link type="text/css"
 		  rel="stylesheet"
@@ -41,8 +50,8 @@ $(function(){
 
 <body>
 <div class="topnav">
-  <a class="active" href="page.jsp">Home</a>
- <a href="${pageContext.request.contextPath}/login/loginform">USER</a>
+
+ <a  class="active"  href="${pageContext.request.contextPath}/login/loginform">USER</a>
   <a href="${pageContext.request.contextPath}/login/newuser">ADMIN</a>
 </div>
 
@@ -57,7 +66,7 @@ $(function(){
 		<h3 style="background-color: MediumSeaGreen;">Save Customer</h3>
 	
 		<form:form action="saveCustomer" modelAttribute="customer" method="POST">
-		
+		<center>
 			<table>
 				<tbody>
 					<tr>
@@ -115,7 +124,7 @@ $(function(){
 				
 				</tbody>
 			</table>
-		
+		</center>
 		
 		</form:form>
 	

@@ -35,7 +35,36 @@ Refresh page every 5 seconds -->
 		window.location = location.href;
 	}
 </script>
+<style>
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
 
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+</style>
 <!-- reference our style sheet -->
 
 <link type="text/css" rel="stylesheet"
@@ -54,6 +83,11 @@ Refresh page every 5 seconds -->
 			<h2>Customer Table</h2>
 		</div>
 	</div>
+	<div class="topnav">
+
+ <a  class="active"  href="${pageContext.request.contextPath}/login/loginform">USER</a>
+  <a href="${pageContext.request.contextPath}/login/newuser">ADMIN</a>
+</div>
 
 	<div id="container">
 

@@ -36,8 +36,8 @@ body {
 <body background="bank.jpg">
 
 <div class="topnav">
-  <a class="active" href="page.jsp">Home</a>
- <a href="${pageContext.request.contextPath}/login/loginform">USER</a>
+
+ <a  class="active" href="${pageContext.request.contextPath}/login/loginform">USER</a>
   <a href="${pageContext.request.contextPath}/login/newuser">ADMIN</a>
 </div>
 

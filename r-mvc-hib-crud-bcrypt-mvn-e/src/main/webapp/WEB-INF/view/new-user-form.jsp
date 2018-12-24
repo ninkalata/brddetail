@@ -8,15 +8,37 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-<div id="nav-placeholder"></div>
-<script src="simple-slider.js"></script>
-<link href="simple-slider.css" rel="stylesheet" type="text/css" />
 
-  <script>
-$(function(){
-  $("#nav-placeholder").load("page.jsp");
-});
-</script>
+<style>
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+</style>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script
@@ -33,6 +55,11 @@ $(function(){
 			
 		</div>
 	</div>
+	<div class="topnav">
+
+ <a class="active" href="${pageContext.request.contextPath}/login/loginform">USER</a>
+  <a href="${pageContext.request.contextPath}/login/newuser">ADMIN</a>
+</div>
 
 	<div id="container">
 <div class="jumbotron" >
@@ -52,7 +79,10 @@ $(function(){
 					<tr>
 						<td><label>Password:</label></td>
 						<td><form:input path="password" /></td>
+						
+                       
 					</tr>
+					
 
 
 					<tr>
@@ -72,6 +102,15 @@ $(function(){
  ${msg}</p>
 </c:if>
 	</div>
+<div style="clear; both;"></div>
+		
+		<p>
+			<a href="${pageContext.request.contextPath}/login/user"><h2>Back to HOME</h2></a>
+		</p>
+	
+	</div>
+		
+		
 
 </body>
 
